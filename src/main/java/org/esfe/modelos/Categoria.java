@@ -6,8 +6,8 @@ import jakarta.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
-@Table(name = "autores")
-public class Autor {
+@Table(name = "categorias")
+public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -15,10 +15,7 @@ public class Autor {
     @NotBlank(message = "El nombre es requerido")
     private String nombre;
 
-    @NotBlank(message = "La nacionalidad es requerida")
-    private String nacionalidad;
-
-    @OneToMany(mappedBy = "autor")
+    @OneToMany(mappedBy = "categoria")
     private List<Libro> libros;
 
     public Integer getId() {
@@ -35,14 +32,6 @@ public class Autor {
 
     public void setNombre(@NotBlank(message = "El nombre es requerido") String nombre) {
         this.nombre = nombre;
-    }
-
-    public @NotBlank(message = "La nacionalidad es requerida") String getNacionalidad() {
-        return nacionalidad;
-    }
-
-    public void setNacionalidad(@NotBlank(message = "La nacionalidad es requerida") String nacionalidad) {
-        this.nacionalidad = nacionalidad;
     }
 
     public List<Libro> getLibros() {

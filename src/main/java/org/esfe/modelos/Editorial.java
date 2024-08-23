@@ -5,6 +5,8 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
+import java.util.List;
+
 @Entity
 @Table(name = "editoriales")
 public class Editorial {
@@ -24,6 +26,9 @@ public class Editorial {
 
     @NotBlank(message = "El teléfono es requerido")
     private String telefono;
+
+    @OneToMany(mappedBy = "editorial")
+    private List<Libro> libros;
 
     public Integer getId() {
         return id;
@@ -63,5 +68,13 @@ public class Editorial {
 
     public void setTelefono(@NotBlank(message = "El teléfono es requerido") String telefono) {
         this.telefono = telefono;
+    }
+
+    public List<Libro> getLibros() {
+        return libros;
+    }
+
+    public void setLibros(List<Libro> libros) {
+        this.libros = libros;
     }
 }

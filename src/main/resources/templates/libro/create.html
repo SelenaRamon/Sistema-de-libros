@@ -26,7 +26,29 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="autor">Autor</label>
-          <input type="text" class="form-control" th:field="*{autor}" id="autor" placeholder="Escriba el nombre del autor" required>
+          <select class="form-control" name="autor" id="autor"  required>
+            <option th:each="autor : ${autores}" th:value="${autor.id}" th:text="${autor.nombre}">Seleccione un autor</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="editorial">Editorial</label>
+          <select class="form-control"  name="editorial" id="editorial" required>
+            <option th:each="editorial : ${editoriales}" th:value="${editorial.id}" th:text="${editorial.nombre}">Seleccione una editorial</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="categoria">Categoría</label>
+          <select class="form-control" name="categoria" id="categoria" required>
+            <option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nombre}">Seleccione una categoría</option>
+          </select>
         </div>
       </div>
     </div>
@@ -43,7 +65,6 @@
         <div class="form-group">
           <label for="fechaDePublicacion">Fecha de Publicación</label>
           <input type="date" class="form-control" th:field="*{fechaDePublicacion}" id="fechaDePublicacion" required>
-
         </div>
       </div>
     </div>

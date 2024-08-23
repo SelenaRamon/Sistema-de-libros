@@ -26,46 +26,34 @@
         </script>
     </div>
 
-    <h1>Listado de libros</h1>
-    <a th:href="@{/libros/create}" class="btn btn-outline-primary">Nuevo libro</a>
+    <h1>Listado de nuevas categorías</h1>
+    <a th:href="@{/categorias/create}" class="btn btn-outline-primary">Nueva categoría</a>
     <table class="table table-striped">
         <thead>
         <tr>
             <th>ID</th>
-            <th>Título</th>
-            <th>Autor</th>
-            <th>Fecha de Publicación</th>
-            <th>Descripción</th>
-            <th>Editorial</th>
-            <th>Categoría</th>
+            <th>Nombre</th>
             <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="item : ${libros}">
+        <tr th:each="item : ${categorias.content}">
             <td th:text="${item.id}"></td>
-            <td th:text="${item.titulo}"></td>
-            <td th:text="${item.autor != null ? item.autor.nombre : 'Sin autor'}"></td>
-            <td th:text="${item.fechaDePublicacion}"></td>
-            <td th:text="${item.descripcion}"></td>
-            <td th:text="${item.editorial != null ? item.editorial.nombre : 'Sin editorial'}"></td>
-            <td th:text="${item.categoria != null ? item.categoria.nombre : 'Sin categoría'}"></td>
+            <td th:text="${item.nombre}"></td>
             <td>
-                <a th:href="@{/libros/details/{id} (id = ${item.id}) }" class="btn btn-outline-secondary">Detalles</a> |
-                <a th:href="@{/libros/edit/{id} (id = ${item.id}) }" class="btn btn-outline-info">Editar</a> |
-                <a th:href="@{/libros/remove/{id} (id = ${item.id}) }" class="btn btn-outline-danger">Eliminar</a>
+                <a th:href="@{/categorias/details/{id} (id = ${item.id}) }" class="btn btn-outline-secondary">Detalles</a> |
+                <a th:href="@{/categorias/edit/{id} (id = ${item.id}) }" class="btn btn-outline-info">Editar</a> |
+                <a th:href="@{/categorias/remove/{id} (id = ${item.id}) }" class="btn btn-outline-danger">Eliminar</a>
             </td>
         </tr>
         </tbody>
     </table>
 
-
     <nav aria-label="Page navigation example">
         <ul class="pagination">
             <li class="page-item" th:each="pageNumber : ${pageNumbers}">
-                <a class="page-link" th:href="@{|/libros?page=${pageNumber}|}" th:text="${pageNumber}"></a>
+                <a class="page-link" th:href="@{|/categorias?page=${pageNumber}|}" th:text="${pageNumber}"></a>
             </li>
         </ul>
     </nav>
-
 </div>

@@ -1,12 +1,6 @@
 package org.esfe.modelos;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -22,14 +16,23 @@ public class Libro {
     @NotBlank(message = "El título es requerido")
     private String titulo;
 
-    @NotBlank(message = "El autor es requerido")
-    private String autor;
-
     @NotBlank(message = "La descripcion es requerida")
     private String descripcion;
 
     @NotNull(message = "La fecha de publicación es requerida")
     private LocalDate fechaDePublicacion;
+
+    @ManyToOne
+    @JoinColumn(name = "autor_id")
+    private Autor autor;
+
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+
+    @ManyToOne
+    @JoinColumn(name = "editorial_id")
+    private Editorial editorial;
 
     public Integer getId() {
         return id;
@@ -47,14 +50,6 @@ public class Libro {
         this.titulo = titulo;
     }
 
-    public @NotBlank(message = "El autor es requerido") String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(@NotBlank(message = "El autor es requerido") String autor) {
-        this.autor = autor;
-    }
-
     public @NotBlank(message = "La descripcion es requerida") String getDescripcion() {
         return descripcion;
     }
@@ -70,4 +65,30 @@ public class Libro {
     public void setFechaDePublicacion(@NotNull(message = "La fecha de publicación es requerida") LocalDate fechaDePublicacion) {
         this.fechaDePublicacion = fechaDePublicacion;
     }
+
+    public Autor getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Autor autor) {
+        this.autor = autor;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public Editorial getEditorial() {
+        return editorial;
+    }
+
+    public void setEditorial(Editorial editorial) {
+        this.editorial = editorial;
+    }
+
+
 }
