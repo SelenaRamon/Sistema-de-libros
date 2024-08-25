@@ -22,6 +22,7 @@ public class Libro {
     @NotNull(message = "La fecha de publicación es requerida")
     private LocalDate fechaDePublicacion;
 
+
     @ManyToOne
     @JoinColumn(name = "autor_id")
     private Autor autor;
@@ -33,6 +34,7 @@ public class Libro {
     @ManyToOne
     @JoinColumn(name = "editorial_id")
     private Editorial editorial;
+
 
     public Integer getId() {
         return id;

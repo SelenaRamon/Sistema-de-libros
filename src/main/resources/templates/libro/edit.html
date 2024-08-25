@@ -24,50 +24,39 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="autor">Autor</label>
-                    <select class="form-control" th:field="*{autor.id}" id="autor" required>
-                        <option value="" th:text="'Seleccione un autor'">Seleccione un autor</option>
-                        <option th:each="autor : ${autores}"
-                                th:value="${autor.id}"
-                                th:text="${autor.nombre}"
-                                th:selected="${autor.id == libro.autor.id}"></option>
-                    </select>
-                </div>
-            </div>
+        <div class="form-group">
+            <label for="autor">Autor</label>
+            <select class="form-control" name="autor" id="autor" required>
+                <option value="" th:text="'Seleccione un autor'">Seleccione un autor</option>
+                <option th:each="autor : ${autores}"
+                        th:value="${autor.id}"
+                        th:text="${autor.nombre}"
+                        th:selected="${autor.id == libro.autor.id}"></option>
+            </select>
         </div>
 
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="editorial">Editorial</label>
-                    <select class="form-control" th:field="*{editorial.id}" id="editorial" required>
-                        <option value="" th:text="'Seleccione una editorial'">Seleccione una editorial</option>
-                        <option th:each="editorial : ${editoriales}"
-                                th:value="${editorial.id}"
-                                th:text="${editorial.nombre}"
-                                th:selected="${editorial.id == libro.editorial.id}"></option>
-                    </select>
-                </div>
-            </div>
+        <div class="form-group">
+            <label for="editorial">Editorial</label>
+            <select class="form-control" name="editorial" id="editorial" required>
+                <option value="" th:text="'Seleccione una editorial'">Seleccione una editorial</option>
+                <option th:each="editorial : ${editoriales}"
+                        th:value="${editorial.id}"
+                        th:text="${editorial.nombre}"
+                        th:selected="${editorial.id == libro.editorial.id}"></option>
+            </select>
         </div>
 
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="categoria">Categoría</label>
-                    <select class="form-control" th:field="*{categoria.id}" id="categoria" required>
-                        <option value="" th:text="'Seleccione una categoría'">Seleccione una categoría</option>
-                        <option th:each="categoria : ${categorias}"
-                                th:value="${categoria.id}"
-                                th:text="${categoria.nombre}"
-                                th:selected="${categoria.id == libro.categoria.id}"></option>
-                    </select>
-                </div>
-            </div>
+        <div class="form-group">
+            <label for="categoria">Categoría</label>
+            <select class="form-control" name="categoria" id="categoria" required>
+                <option value="" th:text="'Seleccione una categoría'">Seleccione una categoría</option>
+                <option th:each="categoria : ${categorias}"
+                        th:value="${categoria.id}"
+                        th:text="${categoria.nombre}"
+                        th:selected="${categoria.id == libro.categoria.id}"></option>
+            </select>
         </div>
+
 
         <div class="row">
             <div class="col-md-6">

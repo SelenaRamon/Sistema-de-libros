@@ -62,6 +62,8 @@ public class LibroController {
         return "libro/index";
     }
 
+
+
     @GetMapping("/create")
     public String create(Libro libro, Model model) {
         model.addAttribute("autores", autorService.obtenerTodos());
@@ -103,8 +105,9 @@ public class LibroController {
     @GetMapping("/details/{id}")
     public String details(@PathVariable("id") Integer id, Model model) {
         Optional<Libro> optionalLibro = libroService.buscarPorId(id);
+
         if (optionalLibro.isPresent()) {
-            model.addAttribute("libro", optionalLibro.get());
+
             return "libro/details";
         } else {
             return "redirect:/libros";
@@ -114,13 +117,18 @@ public class LibroController {
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Integer id, Model model) {
         Optional<Libro> optionalLibro = libroService.buscarPorId(id);
+
         if (optionalLibro.isPresent()) {
             model.addAttribute("libro", optionalLibro.get());
+            model.addAttribute("autores", autorService.obtenerTodos());
+            model.addAttribute("editoriales", editorialService.obtenerTodos());
+            model.addAttribute("categorias", categoriaService.obtenerTodos());
             return "libro/edit";
         } else {
-            return "redirect:/libros";
+            return "redirect:/libros"; // Redirige a la lista de libros si no se encuentra el libro con el ID dado
         }
     }
+
 
     @GetMapping("/remove/{id}")
     public String remove(@PathVariable("id") Integer id, Model model) {
